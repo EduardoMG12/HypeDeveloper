@@ -9,7 +9,7 @@ interface IParams {
 
 export async function generateMetadata({ params }: IParams): Promise<Metadata> {
   const article = await articleMock[parseInt(params.id) - 1];
-  return { title: article.title, description: article.description };
+  return { title: article.head.title, description: article.head.description };
 }
 
 const Article = async ({ params }: IParams) => {
@@ -23,30 +23,30 @@ const Article = async ({ params }: IParams) => {
       </header>
       <main className="flex min-h-screen flex-col items-center justify-between p-6 lg:p-24">
         <ArticleComponent.Root>
-          <ArticleComponent.Title paragraphText={article.title} />
+          <ArticleComponent.Title paragraphText={article.head.title} />
           <ArticleComponent.PrincipalSection
-            paragraphText={article.textPrincipal}
+            paragraphText={article.text.textPrincipal}
           />
-          {article.image ? (
-            <ArticleComponent.ImageRetract src={article.image} />
+          {article.image.imageSrc ? (
+            <ArticleComponent.ImageRetract src={article.image.imageSrc} />
           ) : null}
-          {article.textSecondary ? (
+          {article.text.textSecondary ? (
             <ArticleComponent.SecondarySection
-              paragraphText={article.textSecondary}
+              paragraphText={article.text.textSecondary}
             />
           ) : null}
-          {article.srcVideo ? (
+          {article.video.srcVideo ? (
             <ArticleComponent.Video
-              srcVideo={article.srcVideo}
-              dateVideo={article.dateVideo}
-              descriptionVideo={article.descriptionVideo}
-              titleVideo={article.titleVideo}
+              srcVideo={article.video.srcVideo}
+              dateVideo={article.video.dateVideo}
+              descriptionVideo={article.video.descriptionVideo}
+              titleVideo={article.video.titleVideo}
             />
           ) : null}
-          {article.textLeft || article.textRight ? (
+          {article.text.textLeft || article.text.textRight ? (
             <ArticleComponent.ContainerLeftAndRightContent
-              leftSection={article.textLeft ?? null}
-              rightSection={article.textRight ?? null}
+              leftSection={article.text.textLeft ?? null}
+              rightSection={article.text.textRight ?? null}
             />
           ) : null}
         </ArticleComponent.Root>
