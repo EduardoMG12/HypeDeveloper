@@ -52,8 +52,8 @@ const ImageRetract: FC<IPropsImage> = ({
       <ImageNext
         src={src}
         alt={alt ?? "imagem referente ao artigo"}
-        width={widthImage ? widthImage : 500}
-        height={heightImage ? heightImage : 500}
+        width={widthImage ? widthImage : 400}
+        height={heightImage ? heightImage : 400}
       />
     </div>
   );
@@ -77,8 +77,6 @@ Root.displayName = "Article.Image";
 
 interface IPropsVideo {
   srcVideo: string;
-  heightVideo?: string;
-  widthVideo?: string;
   titleVideo?: string;
   descriptionVideo?: string;
   dateVideo?: string;
@@ -86,8 +84,6 @@ interface IPropsVideo {
 
 const Video: FC<IPropsVideo> = ({
   srcVideo,
-  heightVideo,
-  widthVideo,
   titleVideo,
   dateVideo,
   descriptionVideo,
@@ -98,8 +94,7 @@ const Video: FC<IPropsVideo> = ({
       <p className="text-sm">{descriptionVideo ?? null}</p>
       <p className="text-xs">{dateVideo ?? null}</p>
       <iframe
-        width={widthVideo ?? `640`}
-        height={heightVideo ?? `360`}
+        className="w-4/5 h-96"
         src={srcVideo}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -129,9 +124,9 @@ const ContainerLeftAndRightContent: FC<IPropsContainerLeftAndRight> = ({
   rightSection,
 }) => {
   return (
-    <div className="flex justify-between w-full">
-      {leftSection}
-      {rightSection}
+    <div className="flex flex-col gap-5 w-full pt-10 lg:justify-between lg:flex-row">
+      <p className="lg:w-2/5">{leftSection}</p>
+      <p className="lg:w-2/5">{rightSection}</p>
     </div>
   );
 };
@@ -157,7 +152,6 @@ const RightContent: FC<IPropsParagraphText> = ({ paragraphText }) => {
 };
 
 Root.displayName = "Article.RightContent";
-
 export const Article = {
   Root,
   Title,
