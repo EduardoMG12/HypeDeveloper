@@ -33,15 +33,15 @@ export default function Home() {
                 className="imageArticle w-full h-64 bg-cover bg-no-repeat rounded-t-2xl lg:rounded-l-2xl lg:w-80"
                 style={{
                   backgroundImage: `url(${
-                    data.thumbNail && data.thumbNail != ""
-                      ? data.thumbNail
+                    data.head.thumbNail && data.head.thumbNail != ""
+                      ? data.head.thumbNail
                       : "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                   })`,
                 }}
               ></div>
               <div className="wapper flex-col justify-start gap-3 items-start w-full">
-                <h3 className="title text-lg py-5">{data.title}</h3>
-                <div className="sinopse">{data.description}</div>
+                <h3 className="title text-lg py-5">{data.head.title}</h3>
+                <div className="sinopse">{data.head.description}</div>
               </div>
             </Link>
           ))}
