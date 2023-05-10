@@ -43,7 +43,6 @@ const Article = async ({ params }: IParams) => {
               titleVideo={article.titleVideo}
             />
           ) : null}
-          [01:05]
           {article.textLeft || article.textRight ? (
             <ArticleComponent.ContainerLeftAndRightContent
               leftSection={article.textLeft ?? null}

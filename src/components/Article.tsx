@@ -152,6 +152,7 @@ const RightContent: FC<IPropsParagraphText> = ({ paragraphText }) => {
 };
 
 Root.displayName = "Article.RightContent";
+
 export const Article = {
   Root,
   Title,
