@@ -33,13 +33,14 @@ export default function Home() {
                 className="imageArticle w-1/3 h-64 bg-cover bg-no-repeat rounded-l-2xl"
                 style={{
                   backgroundImage: `url(${
-                    data.image ??
-                    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                    data.thumbNail && data.thumbNail != ""
+                      ? data.thumbNail
+                      : "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                   })`,
                 }}
               ></div>
               <div className="wapper flex-col justify-start gap-3 items-start w-full">
-                <h3 className="title">{data.title}</h3>
+                <h3 className="title text-lg py-5">{data.title}</h3>
                 <div className="sinopse">{data.description}</div>
               </div>
             </Link>
