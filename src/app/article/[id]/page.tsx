@@ -28,15 +28,22 @@ const Article = async ({ params }: IParams) => {
             paragraphText={article.textPrincipal}
           />
           {article.image ? (
-            <ArticleComponent.Image src={article.image} />
+            <ArticleComponent.ImageRetract src={article.image} />
           ) : null}
           {article.textSecondary ? (
             <ArticleComponent.SecondarySection
               paragraphText={article.textSecondary}
             />
           ) : null}
-          {article.video ? (
-            <ArticleComponent.Video src={article.video} />
+          {article.srcVideo ? (
+            <ArticleComponent.Video
+              srcVideo={article.srcVideo}
+              dateVideo={article.dateVideo}
+              heightVideo={article.heightVideo}
+              descriptionVideo={article.descriptionVideo}
+              titleVideo={article.titleVideo}
+              widthVideo={article.widthVideo}
+            />
           ) : null}
           {article.textLeft || article.textRight ? (
             <ArticleComponent.ContainerLeftAndRightContent
