@@ -9,7 +9,7 @@ export default function Home() {
           <h1 className="text-3xl">HypeDeveloper</h1>
         </Link>
       </header>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between p-6 lg:p-24">
         <div className="flex flex-col items-start justify-center gap-10">
           <h2 className="text-3xl">HypeDeveloper</h2>
           <p className="text-lg w-10/12 self-center">
@@ -22,15 +22,15 @@ export default function Home() {
             comentários!
           </p>
         </div>
-        <div className="flex flex-col items-center justify-start gap-20 p-24 min-h-screen w-full">
+        <div className="flex flex-col items-center justify-start gap-20 p-6 lg:p-24 min-h-screen w-full">
           {articleMock.map((data) => (
             <Link
               href={`/article/${data.id}`}
               key={data.id}
-              className="rounded-2xl bg-slate-900 h-3/4 flex w-3/4 gap-5"
+              className="rounded-2xl bg-slate-900 h-3/4 flex w-full gap-5 flex-col lg:flex-row lg:w-3/4"
             >
               <div
-                className="imageArticle w-1/3 h-64 bg-cover bg-no-repeat rounded-l-2xl"
+                className="imageArticle w-full h-64 bg-cover bg-no-repeat rounded-t-2xl lg:rounded-l-2xl lg:w-80"
                 style={{
                   backgroundImage: `url(${
                     data.thumbNail && data.thumbNail != ""

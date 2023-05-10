@@ -21,7 +21,7 @@ const Article = async ({ params }: IParams) => {
           <h1 className="text-3xl">HypeDeveloper</h1>
         </Link>
       </header>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between p-6 lg:p-24">
         <ArticleComponent.Root>
           <ArticleComponent.Title paragraphText={article.title} />
           <ArticleComponent.PrincipalSection
@@ -39,10 +39,8 @@ const Article = async ({ params }: IParams) => {
             <ArticleComponent.Video
               srcVideo={article.srcVideo}
               dateVideo={article.dateVideo}
-              heightVideo={article.heightVideo}
               descriptionVideo={article.descriptionVideo}
               titleVideo={article.titleVideo}
-              widthVideo={article.widthVideo}
             />
           ) : null}
           {article.textLeft || article.textRight ? (
