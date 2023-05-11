@@ -13,6 +13,7 @@ Root.displayName = "Article.Root";
 
 interface IPropsParagraphText {
   paragraphText: string;
+  subtitleParagraphText?: string;
 }
 
 const Title: FC<IPropsParagraphText> = ({ paragraphText }) => {
@@ -94,7 +95,7 @@ const Video: FC<IPropsVideo> = ({
       <p className="text-sm">{descriptionVideo ?? null}</p>
       <p className="text-xs">{dateVideo ?? null}</p>
       <iframe
-        className="w-4/5 h-96"
+        className="w-4/5 h-72 md:w-3/5 lg:h-[46rem]"
         src={srcVideo}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -105,9 +106,28 @@ const Video: FC<IPropsVideo> = ({
 };
 Root.displayName = "Article.Video";
 
-const SecondarySection: FC<IPropsParagraphText> = ({ paragraphText }) => {
+const SecondarySection: FC<IPropsParagraphText> = ({
+  paragraphText,
+  subtitleParagraphText,
+}) => {
   return (
-    <div>
+    <div className="flex flex-col gap-5 py-5">
+      {subtitleParagraphText ? (
+        <h2 className="text-2xl ">{subtitleParagraphText}</h2>
+      ) : null}
+      <p>{paragraphText}</p>
+    </div>
+  );
+};
+const TerterySection: FC<IPropsParagraphText> = ({
+  paragraphText,
+  subtitleParagraphText,
+}) => {
+  return (
+    <div className="flex flex-col gap-5 py-5">
+      {subtitleParagraphText ? (
+        <h2 className="text-2xl ">{subtitleParagraphText}</h2>
+      ) : null}
       <p>{paragraphText}</p>
     </div>
   );
@@ -125,8 +145,8 @@ const ContainerLeftAndRightContent: FC<IPropsContainerLeftAndRight> = ({
 }) => {
   return (
     <div className="flex flex-col gap-5 w-full pt-10 lg:justify-between lg:flex-row">
-      <p className="lg:w-2/5">{leftSection}</p>
-      <p className="lg:w-2/5">{rightSection}</p>
+      {leftSection}
+      {rightSection}
     </div>
   );
 };
@@ -136,7 +156,7 @@ Root.displayName = "Article.ContainerLeftAndRight";
 const LeftContent: FC<IPropsParagraphText> = ({ paragraphText }) => {
   return (
     <div className="w-2/5">
-      <p>{paragraphText}</p>
+      <p className="lg:w-2/5 text-left">{paragraphText}</p>
     </div>
   );
 };
@@ -146,7 +166,7 @@ Root.displayName = "Article.LeftContent";
 const RightContent: FC<IPropsParagraphText> = ({ paragraphText }) => {
   return (
     <div className="w-2/5">
-      <p>{paragraphText}</p>
+      <p className="lg:w-2/5 text-right">{paragraphText}</p>
     </div>
   );
 };
