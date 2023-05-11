@@ -1,7 +1,8 @@
 import { articleMock, IArticle } from "../../../../data/mock";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Article as ArticleComponent } from "../../../components/Article";
+import FirstArticle from "@/components/ArticleTemplates/FirstArticle";
+import WithSubtitleArticle from "@/components/ArticleTemplates/WithSubtitleArticle";
 
 interface IParams {
   params: { id: string };
@@ -22,34 +23,11 @@ const Article = async ({ params }: IParams) => {
         </Link>
       </header>
       <main className="flex min-h-screen flex-col items-center justify-between p-6 lg:p-24">
-        <ArticleComponent.Root>
-          <ArticleComponent.Title paragraphText={article.head.title} />
-          <ArticleComponent.PrincipalSection
-            paragraphText={article.text.textPrincipal}
-          />
-          {article.image.imageSrc ? (
-            <ArticleComponent.ImageRetract src={article.image.imageSrc} />
-          ) : null}
-          {article.text.textSecondary ? (
-            <ArticleComponent.SecondarySection
-              paragraphText={article.text.textSecondary}
-            />
-          ) : null}
-          {article.video.srcVideo ? (
-            <ArticleComponent.Video
-              srcVideo={article.video.srcVideo}
-              dateVideo={article.video.dateVideo}
-              descriptionVideo={article.video.descriptionVideo}
-              titleVideo={article.video.titleVideo}
-            />
-          ) : null}
-          {article.text.textLeft || article.text.textRight ? (
-            <ArticleComponent.ContainerLeftAndRightContent
-              leftSection={article.text.textLeft ?? null}
-              rightSection={article.text.textRight ?? null}
-            />
-          ) : null}
-        </ArticleComponent.Root>
+        {article.head.type.template === "firstArticle" ? (
+          <FirstArticle article={article} />
+        ) : article.head.type.template === "withSubtitleArticle" ? (
+          <WithSubtitleArticle article={article} />
+        ) : null}
       </main>
     </>
   );
