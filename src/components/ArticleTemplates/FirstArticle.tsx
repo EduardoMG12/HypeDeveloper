@@ -20,7 +20,7 @@ const FirstArticle = ({ article }: ISingleArticle) => {
             paragraphText={article.text.textSecondary.text}
           />
         ) : null}
-        {article.video.srcVideo ? (
+        {article.video?.srcVideo ? (
           <ArticleComponent.Video
             srcVideo={article.video.srcVideo}
             dateVideo={article.video.dateVideo}
